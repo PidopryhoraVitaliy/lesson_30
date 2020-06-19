@@ -34,12 +34,29 @@ document.querySelectorAll('.promo__bg').forEach(
 	elem => elem.style.backgroundImage = 'url(./img/bg.jpg)'
 );
 
-movieDB.movies.sort();
-movieDB.movies.forEach(
-	(item, index) => console.log(index+1, item)
+
+document.querySelectorAll('.promo__interactive-item').forEach(
+	elem => elem.remove()
 );
 
 const list = document.getElementsByClassName('promo__interactive-list')[0];
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((item, index) => {
+	
+	console.log(index + 1, item);
+	
+	const li = document.createElement('li');
+	li.classList.add('promo__interactive-item');
+	li.textContent = `${index + 1} ${item}`;
+	list.append(li);
+	
+	const divDelete = document.createElement('div');
+	divDelete.classList.add('delete');
+	li.append(divDelete);
+	
+});
 
 
 
