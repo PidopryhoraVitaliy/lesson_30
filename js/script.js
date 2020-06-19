@@ -35,11 +35,13 @@ document.querySelectorAll('.promo__bg').forEach(
 );
 
 
-document.querySelectorAll('.promo__interactive-item').forEach(
+/*document.querySelectorAll('.promo__interactive-item').forEach(
 	elem => elem.remove()
-);
+);*/
 
 const list = document.getElementsByClassName('promo__interactive-list')[0];
+
+list.innerHTML = '';
 
 movieDB.movies.sort();
 
@@ -47,14 +49,22 @@ movieDB.movies.forEach((item, index) => {
 	
 	console.log(index + 1, item);
 	
-	const li = document.createElement('li');
+	list.innerHTML += `
+		<li class="promo__interactive-item">${index + 1} ${item}
+			<div class="delete"></div>
+		</li>
+	`;
+	
+	/*const li = document.createElement('li');
 	li.classList.add('promo__interactive-item');
 	li.textContent = `${index + 1} ${item}`;
 	list.append(li);
 	
 	const divDelete = document.createElement('div');
 	divDelete.classList.add('delete');
-	li.append(divDelete);
+	li.append(divDelete);*/
+	
+	
 	
 });
 
